@@ -1,0 +1,93 @@
+﻿@model WebProject.Models.CompanyOwnerViewModel
+
+@{
+    ViewData["Title"] = "Управление проетами";
+}
+
+<h1>Управление проектами</h1>
+
+<p>
+    <a asp-action="Create">Создать новый проект</a>
+</p>
+@*Форма поиска проекта*@
+<form asp-controller="Projects" asp-action="Index" method="get">
+    <p>
+        Название проекта: <input type="text" placeholder="Содержит текст..." name="SearchString">
+
+        Заказчик: 
+        <select asp-for="ProjectCompanyOwner" asp-items="Model.CompanyOwners">
+            <option value="">Все</option>
+        </select>
+
+        <input type="submit" value="Фильтровать" />
+    </p>
+</form>
+@*Таблица проектов*@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].CompanyOwner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].CompanyContractor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].CompanyOwnerContactPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].CompanyContractorContactPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].FinishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Priority)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyOwner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyContractor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyOwnerContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyContractorContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinishDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактиовать</a><br />
+                    <a asp-action="Details" asp-route-id="@item.Id">Подробно</a><br />
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button onclick="window.location.href = '/';" class="btn btn-primary">Вернуться на главную страницу</button>

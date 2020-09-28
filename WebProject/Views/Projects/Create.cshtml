@@ -1,0 +1,68 @@
+﻿@model WebProject.Domain.Project
+
+@{
+    ViewData["Title"] = "Создание нового проекта";
+}
+
+<h1>Новый проект</h1>
+
+<h4>Заполните данные нового проекта</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyOwner" class="control-label"></label>
+                <input asp-for="CompanyOwner" class="form-control" />
+                <span asp-validation-for="CompanyOwner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyContractor" class="control-label"></label>
+                <input asp-for="CompanyContractor" class="form-control" />
+                <span asp-validation-for="CompanyContractor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyOwnerContactPerson" class="control-label"></label>
+                <input asp-for="CompanyOwnerContactPerson" class="form-control" />
+                <span asp-validation-for="CompanyOwnerContactPerson" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyContractorContactPerson" class="control-label"></label>
+                <input asp-for="CompanyContractorContactPerson" class="form-control" />
+                <span asp-validation-for="CompanyContractorContactPerson" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinishDate" class="control-label"></label>
+                <input asp-for="FinishDate" class="form-control" />
+                <span asp-validation-for="FinishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Priority" class="control-label"></label>
+                <input asp-for="Priority" class="form-control" />
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку проектов</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

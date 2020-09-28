@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebProject.Domain.Executor>
+
+@{
+    ViewData["Title"] = "Управление исполнителями";
+}
+
+<h1>Управление исполнителями</h1>
+
+<p>
+    <a asp-action="Create">Создать нового исполнителя</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExecutorType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExecutorType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактиовать</a><br/>
+                <a asp-action="Details" asp-route-id="@item.Id">Подробно</a><br />
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<button onclick="window.location.href = '/';" class="btn btn-primary">Вернуться на главную страницу</button>
